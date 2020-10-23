@@ -1,4 +1,4 @@
-# # React simple filter app
+# React simple filter app
 
 > Filter names served by an integrated express backend
 
