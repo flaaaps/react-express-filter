@@ -1,32 +1,36 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './customers.css';
 
-class Customers extends Component {
-  constructor() {
-    super();
-    this.state = {
-      customers: []
-    };
-  }
+function Customers() {
+  const [customers, setCustomers] = useState([])
+  const [value, setValue] = useState('')
 
-  componentDidMount() {
+  useEffect(() => {
     fetch('/api/customers')
       .then(res => res.json())
-      .then(customers => this.setState({customers}, () => console.log('Customers fetched...', customers)));
-  }
+      .then(customers => {
+        const inputValue = value.toLowerCase().replace(/\s/g, "")
+        const result = customers.filter(customer => {
+          const name = customer.firstName + customer.lastName
+          if (name.toLowerCase().trim().indexOf(inputValue) > -1)
+            return name
+        })
+        setCustomers(result)
+      });
+  }, [value])
 
-  render() {
-    return (
-      <div>
-        <h2>Customers</h2>
-        <ul>
-        {this.state.customers.map(customer => 
+
+  return (
+    <div>
+      <h2>Customers</h2>
+      <input onKeyUpCapture={(e) => setValue(e.target.value)} />
+      <ul>
+        {customers.map(customer =>
           <li key={customer.id}>{customer.firstName} {customer.lastName}</li>
         )}
-        </ul>
-      </div>
-    );
-  }
+      </ul>
+    </div>
+  );
 }
 
 export default Customers;

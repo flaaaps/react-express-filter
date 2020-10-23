@@ -1,10 +1,6 @@
-# React Express Starter Pack
+# # React simple filter app
 
-> Create full stack apps with React and Express. Run your client and server with a single command. 
-
-### Redux Version
-This version does not include Redux
-[Click Here For Redux Version](https://github.com/bradtraversy/react_redux_express_starter) 
+> Filter names served by an integrated express backend
 
 ## Quick Start
 
@@ -18,16 +14,12 @@ npm run client-install
 # Run the client & server with concurrently
 npm run dev
 
-# Run the Express server only
-npm run server
-
-# Run the React client only
-npm run client
-
 # Server runs on http://localhost:5000 and client on http://localhost:3000
 ```
 
-## App Info
+---
+
+## Bootstrap Info
 
 ### Author
 
